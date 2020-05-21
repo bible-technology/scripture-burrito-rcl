@@ -1,4 +1,4 @@
-### Scripture Burrito Form - Populated using GRT
+### Scripture Burrito Form - Populated form with file from DCS (bg.door43.org)
 
 ```js
 import React, {useContext, useState, useEffect} from 'react';
@@ -30,8 +30,13 @@ function Component() {
             branch = 'master';
           }
           const uri = config.server + '/' + Path.join(repo.owner.username, repo.name, 'raw/branch', branch, file.path);
-          const response = await cache.get(uri);
-          setReturnValue(<Form formData={response.data} />);
+					const response = await cache.get(uri);
+					const formData = response.data;
+          setReturnValue(
+            <Form 
+              liveValidate={true}
+              formData={formData} />
+          );
         } catch (error) {
           setReturnValue(<div>{error.message}</div>);
         }
@@ -40,7 +45,9 @@ function Component() {
     getFormData();
   }, [config, repo, file]);
 
-  return (!repo && repoComponent) || (!file && fileComponent) || ret;
+	if (!repo) return (<div><h3>Pick a repo with Scripture Burrito metdata file(s):</h3>{repoComponent}</div>);
+	else if (!file) return (<div><h3>Now pick a file that's a Scripture Burrito metdata JSON file:</h3>{fileComponent}</div>);
+  else return ret;
 }
 
 const [authentication, setAuthentication] = React.useState();

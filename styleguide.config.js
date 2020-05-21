@@ -22,7 +22,7 @@ let sections = [
           {
             name: 'Form - Using DCS',
             content: path.resolve(__dirname, `src/components/form`, `Form.dcs.md`),
-            description: 'Populated Scripture Burrito form by selecting metadata from DCS using Gitea React Toolkit'
+            description: 'Populated Scripture Burrito Form by selecting metadata from DCS using Gitea React Toolkit'
           }
         ],
         sectionDepth: 2
