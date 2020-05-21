@@ -13,30 +13,25 @@ let sections = [
         name: 'Components',
         content: 'src/components/form/_readme.md',
         components: 'src/components/form/Form.js',
-      },
-      {
-        name: 'Examples',
         sections: [
           {
-            name: 'Form',
-            sections: [
-              {
-                name: 'Form - Empty',
-                content: path.resolve(__dirname, `src/components/form`, `Form.empty.md`),
-                description: 'Empty Scripture Burrito Form'
-              },
-              {
-                name: 'Form - Populated',
-                content: path.resolve(__dirname, `src/components/form`, `Form.dcs.md`),
-                description: 'Populated Scripture Burrito form by selecting metadata from DCS using Gitea React Toolkit'
-              }
-            ]
+            name: 'Form - Empty',
+            content: path.resolve(__dirname, `src/components/form`, `Form.md`),
+            description: 'Empty Scripture Burrito Form'
+          },
+          {
+            name: 'Form - Using DCS',
+            content: path.resolve(__dirname, `src/components/form`, `Form.dcs.md`),
+            description: 'Populated Scripture Burrito form by selecting metadata from DCS using Gitea React Toolkit'
           }
-        ]
+        ],
+        sectionDepth: 2
       }
-    ]
+    ],
+    sectionDepth: 2
   }
-];
+]
+
 
 module.exports = {
   title: `${upperFirst(camelCase(name))} v${version}`,

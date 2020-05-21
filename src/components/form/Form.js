@@ -3,6 +3,14 @@ import { withTheme} from 'react-jsonschema-form';
 import { Theme as MuiTheme } from 'rjsf-material-ui';
 import { getSchema } from './helpers';
 
+/**
+ * Component to use the SB schema in a Schema Form
+ * 
+ * @example ./Form.dcs.md
+ * @example ./Form.md
+ * 
+ * @param {*} props 
+ */
 function Form(props) {
     const [schema, setSchema] = useState({});
     
