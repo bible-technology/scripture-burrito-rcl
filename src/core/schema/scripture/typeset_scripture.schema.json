@@ -20,10 +20,6 @@
         "colorSpace": {
             "type": "string",
             "enum": ["cmyk", "rgb"]
-        },
-        "fontType": {
-            "type": "string",
-            "enum": ["openType", "bitmap", "trueType", "type1"]
         }
     },
     "properties": {
@@ -55,18 +51,8 @@
         "fonts": {
             "type": "array",
             "items": {
-                "type": "array",
-                "items": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "$ref": "#/definitions/fontType"
-                    }
-                ],
-                "additionalItems": false
-            },
-            "additionalItems": false
+                "type": "string"
+            }
         },
         "conventions": {
             "type": "object",

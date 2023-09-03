@@ -1,21 +1,26 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/source_metadata.schema.json",
-    "title": "Scripture Burrito Metadata (Default)",
+    "$$target": "source_metadata.schema.json",
+    "title": "Metadata (Default)",
     "type": "object",
     "description": "Scripture Burrito source kinda-variant root.",
     "properties": {
+        "format": {
+            "type": "string",
+            "enum": ["scripture burrito"]
+        },
         "meta": {
             "$ref": "source_meta.schema.json"
         },
-        "idServers": {
-            "$ref": "id_servers.schema.json"
+        "idAuthorities": {
+            "$ref": "id_authorities.schema.json"
         },
         "identification": {
             "$ref": "identification.schema.json"
         },
-        "confidentiality": {
-            "$ref": "confidentiality.schema.json"
+        "confidential": {
+            "$ref": "confidential.schema.json"
         },
         "type": {
             "$ref": "type.schema.json"
@@ -38,30 +43,35 @@
         "ingredients": {
             "$ref": "ingredients.schema.json"
         },
-        "names": {
-            "$ref": "names.schema.json"
-        },
-        "recipeSpecs": {
-            "$ref": "recipe_specs.schema.json"
+        "localizedNames": {
+            "$ref": "localized_names.schema.json"
         },
         "progress": {
             "$ref": "progress.schema.json"
         }
     },
-    "required": ["meta", "idServers", "identification", "confidentiality", "type"],
+    "required": ["format", "meta", "idAuthorities", "identification", "confidential", "type", "copyright", "ingredients"],
     "additionalProperties": false,
-    "if": {
-        "properties": {
-            "type": {
+    "allOf": [
+        {
+            "if": {
                 "properties": {
-                    "flavorType": {
-                        "enum": ["scripture", "gloss"]
+                    "type": {
+                        "type": "object",
+                        "properties": {
+                            "flavorType": {
+                                "enum": ["scripture", "gloss"]
+                            }
+                        }
                     }
                 }
+            },
+            "then": {
+                "required": ["languages"]
             }
+        },
+        {
+            "$ref": "copyright_constraints.schema.json"
         }
-    },
-    "then": {
-        "required": ["languages", "names"]
-    }
+    ]
 }

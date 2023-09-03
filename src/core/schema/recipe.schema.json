@@ -1,50 +1,25 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/recipe.schema.json",
-    "title": "Scripture Burrito Recipes",
-    "type": "object",
+    "$$target": "recipe.schema.json",
+    "title": "Recipes",
+    "type": "array",
     "description": "Scripture Burrito recipes.",
-    "properties": {
-        "spec": {
-            "oneOf": [
-                {
-                    "type": "object",
-                    "properties": {
-                        "path": {
-                            "$ref": "common.schema.json#/definitions/path"
-                        }
-                    }
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "idServer": {
-                            "$ref": "common.schema.json#/definitions/idServerLabel"
-                        },
-                        "id": {
-                            "$ref": "common.schema.json#/definitions/bareId"
-                        },
-                        "revision": {
-                            "$ref": "common.schema.json#/definitions/revisionString"
-                        }
-                    },
-                    "required": ["idServer", "id", "revision"]
-                }
-            ]
-        },
-        "content": {
-            "type": "array",
-            "items": {
-                "oneOf": [
-                    {
-                        "$ref": "recipe_section.schema.json"
-                    },
-                    {
-                        "$ref": "recipe_element.schema.json"
-                    }
-                ]
+    "items": {
+        "type": "object",
+        "properties": {
+            "idAuthority": {
+                "type": "string"
+            },
+            "operation": {
+                "type": "string"
+            },
+            "data": {
+                "type": "object"
             }
-        }
+        },
+        "required": ["idAuthority", "operation", "data"],
+        "additionalProperties": false
     },
-    "required": ["content"]
+    "minItems": 1
 }

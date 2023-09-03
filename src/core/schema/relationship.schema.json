@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/relationship.schema.json",
+    "$$target": "relationship.schema.json",
     "title": "Relationship",
     "type": "object",
     "description": "Describes a relationship to a different burrito that can be obtained from an indicated server.",
@@ -20,8 +21,7 @@
                         "typesetScripture",
                         "signLanguageVideoTranslation",
                         "embossedBrailleScripture",
-                        "glossedTextStory",
-                        "parascripturalWordAlignment"
+                        "glossedTextStory"
                     ]
                 },
                 {
@@ -47,6 +47,7 @@
         {
             "properties": {
                 "flavor": {
+                    "type": "string",
                     "pattern": "^x-[a-z][A-za-z0-9]*$"
                 }
             },
@@ -79,16 +80,6 @@
                     "not": {
                         "const": "scriptureText"
                     }
-                }
-            }
-        },
-        {
-            "properties": {
-                "relationType": {
-                    "const": "parascriptural"
-                },
-                "flavor": {
-                    "enum": ["parascripturalWordAlignment"]
                 }
             }
         }

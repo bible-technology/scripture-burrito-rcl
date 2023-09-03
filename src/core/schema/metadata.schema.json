@@ -1,16 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/metadata.schema.json",
-    "title": "Scripture Burrito Metadata",
+    "$$target": "metadata.schema.json",
+    "title": "Metadata",
     "type": "object",
     "description": "Scripture Burrito root metadata object.",
     "properties": {
         "meta": {
             "type": "object",
             "properties": {
-                "variant": {
-                    "type": "string",
-                    "pattern": "^(source|derived|template)"
+                "category": {
+                    "enum": ["source", "derived", "template"]
                 }
             }
         }
@@ -18,9 +18,10 @@
     "if": {
         "properties": {
             "meta": {
+                "type": "object",
                 "properties": {
-                    "variant": {
-                        "pattern": "^source"
+                    "category": {
+                        "const": "source"
                     }
                 }
             }
@@ -33,9 +34,10 @@
         "if": {
             "properties": {
                 "meta": {
+                    "type": "object",
                     "properties": {
-                        "variant": {
-                            "pattern": "^derived"
+                        "category": {
+                            "const": "derived"
                         }
                     }
                 }

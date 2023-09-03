@@ -1,7 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/role.schema.json",
-    "title": "Scripture Burrito Role",
+    "$$target": "role.schema.json",
+    "title": "Role",
     "type": "string",
     "description": "Roles which may be optionally attached to an ingredient.",
     "oneOf": [
@@ -50,12 +51,24 @@
             "enum": ["body", "thumbnail"]
         },
         {
+            "description": "a versification file indicating the delta from the org versification",
+            "enum": ["versification"]
+        },
+        {
+            "description": "A role for textTranslation flavored burritos",
+            "enum": ["localedata"]
+        },
+        {
             "description": "A label for story-type units",
             "pattern": "^unit\\s.*\\S$"
         },
         {
             "description": "A label for dictionary-type resources",
             "pattern": "^(name|sign|word|concept|place)(\\s.*\\S)?$"
+        },
+        {
+            "description": "A role for a full copyright statement",
+            "enum": ["copyrightStatement"]
         },
         {
             "description": "An x-role",

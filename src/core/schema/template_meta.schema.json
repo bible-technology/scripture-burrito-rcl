@@ -1,14 +1,13 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://burrito.bible/schema/template_meta.schema.json",
-    "title": "Scripture Burrito Meta (Template)",
+    "$$target": "template_meta.schema.json",
+    "title": "Meta (Template)",
     "type": "object",
     "description": "Information about the Scripture Burrito metadata file.",
     "properties": {
-        "variant": {
-            "type": "string",
-            "const": "template",
-            "description": "A template is a template"
+        "category": {
+            "const": "template"
         },
         "templateName": {
             "$ref": "common.schema.json#/definitions/localizedText"
@@ -23,11 +22,7 @@
             "$ref": "software_and_user_info.schema.json",
             "description": "Information about the program and user who generated this burrito."
         },
-        "uploader": {
-            "$ref": "software_and_user_info.schema.json",
-            "description": "Information about the program and user who uploaded this burrito."
-        },
-        "defaultLanguage": {
+        "defaultLocale": {
             "$ref": "meta_default_language.schema.json"
         },
         "normalization": {
@@ -37,6 +32,6 @@
             "$ref": "meta_comments.schema.json"
         }
     },
-    "required": ["version", "variant", "defaultLanguage", "dateCreated", "templateName"],
+    "required": ["version", "category", "defaultLocale", "dateCreated", "templateName"],
     "additionalProperties": false
 }
